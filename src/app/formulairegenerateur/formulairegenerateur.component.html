@@ -1,0 +1,88 @@
+<h1 class="text-center">{{title}}</h1>
+<hr>
+<div class="jumbotron">
+ <div class="container">
+  <div class="rox">
+    <div class="col-md-6">
+      <h3>Formulaire generateur</h3>
+      <form [formGroup]="generateurForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Nom projet :</label>
+          <input type="text" class="form-control" formControlName="nomprojet" placeholder="saisir nom de projet" [ngClass]="{ 'is-invalid': submitted && f.nomprojet.errors }" [(ngModel)]="nprojet"/>
+       
+        <div *ngIf="submitted && f.nomprojet.errors" class="invalid-feedback">
+          <div *ngIf="f.nomprojet.errors.required">Nom de projet obligatoire </div>
+      </div>
+    </div>
+        <div class="form-group">
+          <label>Nom de package :</label>
+          <input type="text" class="form-control" formControlName="nompackage" placeholder="saisir nom package" [ngClass]="{ 'is-invalid': submitted && f.nompackage.errors }"/>
+          <div *ngIf="submitted && f.nompackage.errors" class="invalid-feedback">
+            <div *ngIf="f.nompackage.errors.required">Nom de package obligatoire </div>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label>Type de base de donne :</label>
+          <select class="custom-select" formControlName="typebasededonne"  [ngClass]="{ 'is-invalid': submitted && f.typebasededonne.errors }">
+            <option selected>Choisir type de base de donne...</option>
+            <option value="MYSQL">MYSQL</option>
+            <option value="postgresql">postgresql</option>
+          </select>
+
+          <div *ngIf="submitted && f.typebasededonne.errors" class="invalid-feedback">
+            <div *ngIf="f.typebasededonne.errors.required">choisir un type de base de donne est obligatoire</div>
+        </div>
+          
+      </div>
+      <div class="form-group">
+        <label>Lien du serveur :</label>
+        <input type="text" class="form-control" formControlName="lienserveur" placeholder="saisir le lien de serveur" [ngClass]="{ 'is-invalid': submitted && f.lienserveur.errors }"/>
+        <div *ngIf="submitted && f.lienserveur.errors" class="invalid-feedback">
+          <div *ngIf="f.lienserveur.errors.required"> URL serveur obligatoire </div>
+      </div>
+       </div>
+      
+               <div class="form-group">
+          <label>port base de donne :</label>
+          <input type="number" class="form-control" formControlName ="portbd" placeholder="saisir port base de donne" [ngClass]="{ 'is-invalid': submitted && f.portbd.errors }"/>
+          <div *ngIf="submitted && f.portbd.errors" class="invalid-feedback">
+            <div *ngIf="f.portbd.errors.required"> port base de donne obligatoire </div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label>nom d'urilisateur de base de donne:</label>
+          <input type="text" class="form-control" formControlName="nomutilisateur" placeholder="saisir le nom d'utilisateur de base donne base de donne" [ngClass]="{ 'is-invalid': submitted && f.nomutilisateur.errors }"/>
+          <div *ngIf="submitted && f.nomutilisateur.errors" class="invalid-feedback">
+            <div *ngIf="f.nomutilisateur.errors.required"> nom utilisateur obligatoire </div>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label>mot de passe utilisateur base de donne :</label>
+          <input type="password" class="form-control" formControlName="motdepasseutilisateur" placeholder="saisir mot de passe" [ngClass]="{ 'is-invalid': submitted && f.motdepasseutilisateur.errors }"/>
+          <div *ngIf="submitted && f.motdepasseutilisateur.errors" class="invalid-feedback">
+            <div *ngIf="f.motdepasseutilisateur.errors.required">mot de passe obligatoire</div>
+            <div *ngIf="f.motdepasseutilisateur.errors.minlength">Le mot de passe doit être au moins de 8 caractères</div>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <input type="checkbox" formControlName="acceptation" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptation.errors}" />
+          <label for="acceptation" class="form-check-label">verifier vos information et accepter </label>
+          <div *ngIf="submitted && f.acceptation.errors" class="invalid-feedback">accepter votre verification</div>
+
+        </div>
+
+
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary" >envoyer</button>
+          <button type="reset" class="btn btn-secondary" (click)="onReset()">Cancel</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
