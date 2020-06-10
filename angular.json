@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "generateurforms"
+    }
+  },
+  "defaultProject": "generateurforms",
+  "cli": {
+    "analytics": false
+  }
 }

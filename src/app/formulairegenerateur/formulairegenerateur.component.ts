@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class FormulairegenerateurComponent implements OnInit {
 
-  title = 'fromulaire-generateur';
+  title = 'fromulaire du générateur';
   generateurForm: FormGroup; 
   nprojet;
   submitted=false;
@@ -27,9 +27,10 @@ export class FormulairegenerateurComponent implements OnInit {
     nompackage: ['', Validators.required],
     typebasededonne: ['', Validators.required],
     lienserveur: ['', Validators.required],
-    portbd: ['', Validators.required],
+    port: ['', Validators.required],
+    databaseName: ['', Validators.required],
     nomutilisateur: ['', Validators.required],
-    motdepasseutilisateur:['', [Validators.required, Validators.minLength(8)]],
+    motdepasseutilisateur:['', [Validators.required, Validators.minLength(0)]],
     acceptation: [false, Validators.requiredTrue]
 
   })
@@ -42,7 +43,7 @@ export class FormulairegenerateurComponent implements OnInit {
   onSubmit() {
     
     this.submitted = true;
-    this.service.envoyerformulaire(this.f.nomprojet.value,this.f.nompackage.value,this.f.typebasededonne.value,this.f.lienserveur.value,this.f.portbd.value,this.f.nomutilisateur.value,this.f.motdepasseutilisateur.value).subscribe(value => console.log(value));
+    this.service.envoyerformulaire(this.f.nomprojet.value,this.f.nompackage.value,this.f.typebasededonne.value,this.f.lienserveur.value,this.f.port.value,this.f.databaseName.value,this.f.nomutilisateur.value,this.f.motdepasseutilisateur.value).subscribe(value => console.log(value));
     // stop here if form is invalid
     if (this.generateurForm.invalid) {
         return;

@@ -10,9 +10,9 @@ export class FrorminputService {
   private variable;
 
   constructor(private http: HttpClient) {}
-    public envoyerformulaire(nomprojet:string,nompackage:string,typebasededonne:string,lienserveur:string,portbd:string,nomutilisateur:string,motdepasse:string)
+    public envoyerformulaire(nomprojet:string,nompackage:string,typebasededonne:string,lienserveur:string,port:string,databaseName:string,nomutilisateur:string,motdepasse:string)
     { 
-      this.variable={nomprjet:nomprojet,nompackage:nompackage,typebasededonne:typebasededonne,lienserveur:lienserveur,portbd:portbd,nomutilisateur:nomutilisateur,motdepasse:motdepasse};
+      this.variable={nomprjet:nomprojet,nompackage:nompackage,typebasededonne:typebasededonne,lienserveur:lienserveur,port:port,databaseName:databaseName,nomutilisateur:nomutilisateur,motdepasse:motdepasse};
       console.log(this.variable);
       return this.http.post<any>(this.fUrl,this.variable);
     }
